@@ -4,18 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop Hero(Best Gadgets Provider)</title>
+  <title>AH Gadgets(Tech Shop)</title>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body class="m-0 p-0">
-  <header>
+  <!-- navbar -->
+  <header class="relative z-10">
     <div class="flex h-16 bg-blue-900 space-x-6 justify-around lg:justify-center">
       <!-- logo -->
       <div class="flex items-center">
         <img class="h-[70%]" src="resources/logo.png" alt="logo icon" class="w-1/6">
+        <p class="text-white text-3xl font-extrabold">AH Gadgets</p>
       </div>
 
       <!-- searchbox and navbar-items -->
@@ -38,16 +40,62 @@
       <div class="flex lg:hidden items-center">
         <div class="relative group">
           <i class="fa-solid fa-bars-staggered fa-2x text-white cursor-pointer"></i>
-          <ul class="absolute right-0 w-[7rem] bg-white hidden group-hover:flex flex-col font-semibold">
-            <li class="pt-4"><a class="block px-4 py-2 text-black hover:text-white hover:bg-blue-900" href="">Home</a></li>
-            <li><a class="block px-4 py-2 text-black hover:text-white hover:bg-blue-900" href="">About</a></li>
-            <li><a class="block px-4 py-2 text-black hover:text-white hover:bg-blue-900" href="">Contact Us</a></li>
+          <ul class="absolute right-0 w-[7rem] hidden group-hover:flex flex-col font-semibold">
+            <li class="pt-3"><a class="block px-4 py-2 text-white hover:bg-blue-900" href="">Home</a></li>
+            <li><a class="block px-4 py-2 text-white hover:bg-blue-900" href="">About</a></li>
+            <li><a class="block px-4 py-2 text-white hover:bg-blue-900" href="">Contact Us</a></li>
           </ul>
         </div>
       </div>
     </div>
   </header>
-  <main></main>
+
+  <main>
+    <!-- banner -->
+    <div class="carousel w-full h-[40rem] lg:h-[35rem] overflow-hidden relative z-0">
+      <div id="slide1" class="carousel-item relative w-full">
+        <div class="hero min-h-screen bg-gradient-to-br from-[#fbcffb] via-[#8083e7] to-[#cfd5f7]">
+          <div class="hero-content flex-col lg:flex-row">
+            <div class="mt-5 lg:mt-[-31rem] lg:w-[55%] text-black">
+              <p class="opacity-50">Pro.Beyond.</p>
+              <h1 class="text-5xl font-bold"><span class="font-light">IPhone</span> 15 Pro</h1>
+              <p class="py-6 opacity-50">Created to change everything for the better. For everyone</p>
+              <button class="btn hidden lg:flex bg-blue-900 border-none font-bold text-white px-14 rounded-sm">Shop
+                Now</button>
+            </div>
+            <div class="lg:w-[45%]">
+              <img src="resources/Iphone Image.png" class="max-w-sm pt-3 lg:pt-16" />
+            </div>
+          </div>
+        </div>
+        <div class="absolute hidden lg:flex justify-between left-5 right-5 top-1/2">
+          <a href="#slide2" class="btn btn-circle">❮</a>
+          <a href="#slide2" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+      <div id="slide2" class="hidden lg:flex carousel-item relative w-full">
+        <div class="hero min-h-screen bg-gradient-to-br from-[#fbcffb] via-[#8083e7] to-[#cfd5f7]">
+          <div class="hero-content flex-col lg:flex-row md:lg:mt-[-10rem] lg:mt-[-10rem]">
+            <div class="lg:w-[55%] text-black">
+              <p class="opacity-50">Pro.Beyond.</p>
+              <h1 class="text-5xl font-bold">Macbook Air</h1>
+              <p class="py-6 opacity-50">Created to change everything for the better. For everyone</p>
+              <button class="btn hidden lg:flex bg-blue-900 border-none font-bold text-white px-14 rounded-sm">Shop
+                Now</button>
+            </div>
+            <div class="lg:w-[40%]">
+              <img src="resources/Group 6.png" class="max-w-sm" />
+            </div>
+          </div>
+        </div>
+        <div class="absolute flex justify-between left-5 right-5 top-1/2">
+          <a href="#slide1" class="btn btn-circle">❮</a>
+          <a href="#slide1" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
   <footer></footer>
 </body>
 
