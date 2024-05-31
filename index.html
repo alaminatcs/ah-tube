@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Hero(Best Gadgets Provider)</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="m-0 p-0">
+  <header>
+    <div class="flex h-16 bg-blue-900 space-x-6 justify-around lg:justify-center">
+      <!-- logo -->
+      <div class="flex items-center">
+        <img class="h-[70%]" src="resources/logo.png" alt="logo icon" class="w-1/6">
+      </div>
+
+      <!-- searchbox and navbar-items -->
+      <div class="hidden lg:flex items-center space-x-4">
+        <div>
+          <input type="text" placeholder="Search" class="input input-sm bg-white w-[16rem]" />
+        </div>
+        <div class="flex space-x-6 font-semibold text-white items-center">
+          <a href="">Home</a>
+          <a class="opacity-50" href="">About</a>
+          <a class="opacity-50" href="">Contact Us</a>
+        </div>
+        <div class="space-x-6">
+          <a href=""><i class="fa-solid fa-cart-shopping text-white"></i></a>
+          <a href=""><i class="fa-regular fa-user text-white"></i></a>
+        </div>
+      </div>
+
+      <!-- humburger menu -->
+      <div class="flex lg:hidden items-center">
+        <div class="relative group">
+          <i class="fa-solid fa-bars-staggered fa-2x text-white cursor-pointer"></i>
+          <ul class="absolute right-0 w-[7rem] bg-white hidden group-hover:flex flex-col font-semibold">
+            <li class="pt-4"><a class="block px-4 py-2 text-black hover:text-white hover:bg-blue-900" href="">Home</a></li>
+            <li><a class="block px-4 py-2 text-black hover:text-white hover:bg-blue-900" href="">About</a></li>
+            <li><a class="block px-4 py-2 text-black hover:text-white hover:bg-blue-900" href="">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main></main>
+  <footer></footer>
+</body>
+
+</html>
