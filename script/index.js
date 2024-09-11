@@ -1,15 +1,17 @@
-const loadContent = async (contentId = 1000, ask) => {
-    try {
-        const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${contentId}`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+let ask = false;
+let contentsContainer = [];
+
+const addRedBG = (id) => {
+    const btnsId = ['all', 'music', 'comedy', 'drawing'];
+    for (const btnId of btnsId) {
+        if (btnId === id) {
+            const element = document.getElementById(id);
+            element.classList.add('bg-red-500');
         }
-        const jsonData = await response.json();
-        const contents = jsonData.data;
-        displayContent(contents);
-    }
-    catch(error) {
-        console.error('Error fetching content:', error);
+        else {
+            const element = document.getElementById(btnId);
+            element.classList.remove('bg-red-500');
+        }
     }
 }
 
@@ -21,10 +23,35 @@ const timeConversion = (sec) => {
     return `${hours} hrs ${mins} min ago`;
 }
 
-const displayContent = (contents) => {
+const comedyContentDisplay = () => {    
+    const cardParent = document.getElementById('content-container');
+    cardParent.classList.remove('md:grid-cols-2', 'lg:grid-cols-3', 'gap-4');
+    cardParent.textContent = '';
+    
+    const cardChild = document.createElement('div');
+    cardChild.innerHTML = `
+    <div class="flex flex-col items-center text-center">
+        <img class="mt-12 w-32 h-32" src="images/icon.png" alt="no content logo">
+        <p class="text-2xl font-semibold">Oops!! Sorry, There is no content here</p>
+    </div>
+    `
+    cardParent.appendChild(cardChild);
+}
+
+const sortedContents = ([...contents]) => {
+    contentsContainer = contents.sort((a, b) => b.others.views - a.others.views);
+}
+
+const displayContent = () => {
     const cardParent = document.getElementById('content-container');
     cardParent.textContent = '';
-    contents.forEach(content => {
+    cardParent.classList.add('md:grid-cols-2', 'lg:grid-cols-3', 'gap-4');
+
+    if (ask) {
+        sortedContents(contentsContainer);
+    }
+
+    contentsContainer.forEach(content => {
         const cardChild = document.createElement('div');
         cardChild.classList = `card bg-base-100 shadow-lg`;
         cardChild.innerHTML = `
@@ -54,20 +81,33 @@ const displayContent = (contents) => {
     });
 }
 
-document.getElementById('All').addEventListener('click', () => {
-    loadContent(1000);
-});
+const loadContent = async (contentId = 1000, id = 'all') => {
+    addRedBG(id);
+    try {
+        const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${contentId}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        contentsContainer = jsonData.data;
+        id === 'comedy' ? comedyContentDisplay() : displayContent();
+    }
+    catch(error) {
+        console.error('Error fetching content:', error);
+    }
+}
 
-document.getElementById('Music').addEventListener('click', () => {
-    loadContent(1001);
-});
-
-document.getElementById('Comedy').addEventListener('click', () => {
-    loadContent(1002);
-});
-
-document.getElementById('Drawing').addEventListener('click', () => {
-    loadContent(1003);
+document.getElementById('sort-btn').addEventListener('click', () => {
+    // Sort content by views (descending order)
+    const element = document.getElementById('sort-btn');
+    if (element.classList.contains('bg-red-500')) {
+        ask = false;
+        element.classList.remove('bg-red-500');
+    }
+    else {
+        ask = true;
+        element.classList.add('bg-red-500');
+    }
 });
 
 loadContent();

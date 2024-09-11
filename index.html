@@ -18,10 +18,10 @@
             <p class="text-4xl font-bold"><span class="text-red-500">AH</span>tube</p>
         </div>
         <div id="id-2">
-            <button class="btn btn-active">Sort by view</button>
+            <button id="sort-btn" class="btn btn-active" title="indeed before type selection">Sort by view</button>
         </div>
         <div id="id-3">
-            <button class="btn btn-error hidden md:flex lg:flex">Blog</button>
+            <button id="blog-btn" class="btn btn-error hidden md:flex lg:flex">Blog</button>
         </div>
     </header>
     <hr>
@@ -29,14 +29,14 @@
     <main class="my-4">
         <!-- header -->
         <section class="text-center space-x-4">
-            <button id="All" class="btn btn-sm">All</button>
-            <button id="Music" class="btn btn-sm">Music</button>
-            <button id="Comedy" class="btn btn-sm">Comedy</button>
-            <button id="Drawing" class="btn btn-sm">Drawing</button>
+            <button id="all" class="btn btn-sm" onclick="loadContent(1000, 'all')">All</button>
+            <button id="music" class="btn btn-sm" onclick="loadContent(1001, 'music')">Music</button>
+            <button id="comedy" class="btn btn-sm" onclick="loadContent(1002, 'comedy')">Comedy</button>
+            <button id="drawing" class="btn btn-sm" onclick="loadContent(1003, 'drawing')">Drawing</button>
         </section>
-        <!-- content -->
+        <!-- content container -->
         <section class="container mx-auto mt-6">
-            <div id="content-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div id="content-container" class="grid grid-cols-1">
                 <!-- contents -->
             </div>
         </section>
