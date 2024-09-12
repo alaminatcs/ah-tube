@@ -13,8 +13,8 @@
 <body>
     <div class="stars">
         <div class="w-2/3 mx-auto">
-            <div class="mt-16">
-                <div class="collapse collapse-plus bg-base-100">
+            <div class="mt-6">
+                <div class="collapse collapse-plus mb-2 bg-base-100">
                     <input type="radio" name="my-accordion-3" checked="checked" />
                     <div class="collapse-title text-xl font-medium">Discuss the scope of var, let, and const</div>
                     <div class="collapse-content">
@@ -36,7 +36,8 @@
                             declared.</p>
                     </div>
                 </div>
-                <div class="collapse collapse-plus bg-base-200">
+                <!-- 2nd collapse -->
+                <div class="collapse collapse-plus mb-2 bg-base-200">
                     <input type="radio" name="my-accordion-3" />
                     <div class="collapse-title text-xl font-medium">Tell us the use cases of null and undefined</div>
                     <div class="collapse-content">
@@ -58,25 +59,28 @@
                             object that doesn't exist.</p>
                     </div>
                 </div>
+                <!-- third collapse -->
                 <div class="collapse collapse-plus bg-base-200">
                     <input type="radio" name="my-accordion-3" />
                     <div class="collapse-title text-xl font-medium">What do you mean by REST API?</div>
                     <div class="collapse-content">
-                        <p>A<span class="text-lg font-semibold"> REST API</span>(Representational State Transfer Application Programming Interface) is a type of
+                        <p>A<span class="text-lg font-semibold"> REST API</span>(Representational State Transfer
+                            Application Programming Interface) is a type of
                             web service that allows communication between clients (such as web browsers or mobile apps)
                             and servers using the principles of REST architecture. REST is a set of architectural
                             principles used to design networked applications.</p>
                     </div>
                 </div>
             </div>
-            <!-- Back Button using JavaScript -->
-            <button class="btn bg-red-500 my-10" onclick="goBack()">Back to Home</button>
+            <!-- back button for home page -->
+            <button class="btn bg-red-500 my-10" onclick="backToHome()">Back to Home</button>
         </div>
     </div>
 
     <script>
-        function goBack() {
-            window.location.href = 'index.html'; // This navigates back to the previous page in the browser's history
+        function backToHome() {
+            // back to the previous page in the browser's history
+            window.location.href = 'index.html';
         }
     </script>
 </body>

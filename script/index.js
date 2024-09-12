@@ -1,6 +1,6 @@
 let ask = false;
 let contentsContainer = [];
-
+// add red background
 const addRedBG = (id) => {
     const btnsId = ['all', 'music', 'comedy', 'drawing'];
     for (const btnId of btnsId) {
@@ -14,15 +14,16 @@ const addRedBG = (id) => {
         }
     }
 }
-
+// time conversion
 const timeConversion = (sec) => {
     let secInt = parseInt(sec);
     const hours = parseInt(secInt / 3600);
     secInt = parseInt(secInt % 3600);
     const mins = parseInt(secInt / 60);
+
     return `${hours} hrs ${mins} min ago`;
 }
-
+// loading spinner
 const loadingSpinner = (order) => {
     if (!order) {
         document.getElementById('spinner').classList.add('hidden');
@@ -31,13 +32,24 @@ const loadingSpinner = (order) => {
         document.getElementById('spinner').classList.remove('hidden');
     }
 }
-
-const drawingContentDisplay = () => {  
-    loadingSpinner(true);  
+// parse views string into number
+const parseViews = (views) => {
+    let value = parseFloat(views);
+    if (views.includes('K')) {
+        value *= 1000;
+    }
+    else if (views.includes('M')) {
+        value *= 1000000;
+    }
+    return value;
+};
+// display drawing content
+const drawingContentDisplay = () => {
+    loadingSpinner(true);
     const cardParent = document.getElementById('content-container');
     cardParent.classList.remove('md:grid-cols-2', 'lg:grid-cols-3', 'gap-4');
     cardParent.textContent = '';
-    
+
     const cardChild = document.createElement('div');
     cardChild.innerHTML = `
     <div class="flex flex-col items-center text-center">
@@ -48,18 +60,28 @@ const drawingContentDisplay = () => {
     cardParent.appendChild(cardChild);
     loadingSpinner(false);
 }
-
+// display content except the drwaing 
 const displayContent = () => {
+    if (contentsContainer.length === 0) {
+        return drawingContentDisplay();
+    }
+
     loadingSpinner(true);
     const cardParent = document.getElementById('content-container');
     cardParent.textContent = '';
     cardParent.classList.add('md:grid-cols-2', 'lg:grid-cols-3', 'gap-4');
 
+
+    let contents = [...contentsContainer]
     if (ask) {
-        contentsContainer.sort((a, b) => b.others.views - a.others.views);
+        contents.sort((a, b) => {
+            const aViews = parseViews(a.others.views);
+            const bViews = parseViews(b.others.views);
+            return bViews - aViews;
+        });
     }
 
-    contentsContainer.forEach(content => {
+    contents.forEach(content => {
         const cardChild = document.createElement('div');
         cardChild.classList = `card bg-base-100 shadow-lg`;
         cardChild.innerHTML = `
@@ -89,7 +111,7 @@ const displayContent = () => {
     });
     loadingSpinner(false);
 }
-
+// load content
 const loadContent = async (contentId = 1000, id = 'all') => {
     addRedBG(id);
     try {
@@ -101,22 +123,21 @@ const loadContent = async (contentId = 1000, id = 'all') => {
         contentsContainer = jsonData.data;
         id === 'drawing' ? drawingContentDisplay() : displayContent();
     }
-    catch(error) {
+    catch (error) {
         console.error('Error fetching content:', error);
     }
 }
-
+// sort button
 document.getElementById('sort-btn').addEventListener('click', () => {
-    // Sort content by views (descending order)
+    ask = !ask;
     const element = document.getElementById('sort-btn');
-    if (element.classList.contains('bg-red-500')) {
-        ask = false;
-        element.classList.remove('bg-red-500');
-    }
-    else {
-        ask = true;
+    if (ask) {
         element.classList.add('bg-red-500');
     }
+    else {
+        element.classList.remove('bg-red-500');
+    }
+    displayContent();
 });
 
 loadContent();
