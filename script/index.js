@@ -52,7 +52,7 @@ const drawingContentDisplay = () => {
 
     const cardChild = document.createElement('div');
     cardChild.innerHTML = `
-    <div class="flex flex-col items-center text-center">
+    <div class="flex flex-col items-center text-center h-[57vh]">
         <img class="mt-12 w-32 h-32" src="images/icon.png" alt="no content logo">
         <p class="text-2xl font-semibold">Oops!! Sorry, There is no content here</p>
     </div>
