@@ -23,7 +23,17 @@ const timeConversion = (sec) => {
     return `${hours} hrs ${mins} min ago`;
 }
 
-const comedyContentDisplay = () => {    
+const loadingSpinner = (order) => {
+    if (!order) {
+        document.getElementById('spinner').classList.add('hidden');
+    }
+    else {
+        document.getElementById('spinner').classList.remove('hidden');
+    }
+}
+
+const drawingContentDisplay = () => {  
+    loadingSpinner(true);  
     const cardParent = document.getElementById('content-container');
     cardParent.classList.remove('md:grid-cols-2', 'lg:grid-cols-3', 'gap-4');
     cardParent.textContent = '';
@@ -36,19 +46,17 @@ const comedyContentDisplay = () => {
     </div>
     `
     cardParent.appendChild(cardChild);
-}
-
-const sortedContents = ([...contents]) => {
-    contentsContainer = contents.sort((a, b) => b.others.views - a.others.views);
+    loadingSpinner(false);
 }
 
 const displayContent = () => {
+    loadingSpinner(true);
     const cardParent = document.getElementById('content-container');
     cardParent.textContent = '';
     cardParent.classList.add('md:grid-cols-2', 'lg:grid-cols-3', 'gap-4');
 
     if (ask) {
-        sortedContents(contentsContainer);
+        contentsContainer.sort((a, b) => b.others.views - a.others.views);
     }
 
     contentsContainer.forEach(content => {
@@ -79,6 +87,7 @@ const displayContent = () => {
         `
         cardParent.appendChild(cardChild);
     });
+    loadingSpinner(false);
 }
 
 const loadContent = async (contentId = 1000, id = 'all') => {
@@ -90,7 +99,7 @@ const loadContent = async (contentId = 1000, id = 'all') => {
         }
         const jsonData = await response.json();
         contentsContainer = jsonData.data;
-        id === 'comedy' ? comedyContentDisplay() : displayContent();
+        id === 'drawing' ? drawingContentDisplay() : displayContent();
     }
     catch(error) {
         console.error('Error fetching content:', error);

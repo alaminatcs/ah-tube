@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: black;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Create a starry sky */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.stars::before {
+    content: '';
+    width: 1px;
+    height: 1px;
+    box-shadow:
+        50px 100px white,
+        150px 200px white,
+        300px 150px white,
+        500px 400px white,
+        700px 250px white,
+        900px 350px white,
+        1050px 600px white,
+        1200px 800px white,
+        1300px 500px white,
+        1400px 300px white,
+        1600px 150px white,
+        1700px 700px white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(0);
+}
+
+/* More stars with random placement */
+.stars::after {
+    content: '';
+    width: 2px;
+    height: 2px;
+    box-shadow:
+        100px 200px white,
+        250px 300px white,
+        400px 250px white,
+        550px 450px white,
+        750px 500px white,
+        1000px 600px white,
+        1100px 100px white,
+        1300px 650px white,
+        1500px 850px white,
+        1700px 300px white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(0);
+}

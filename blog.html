@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <link rel="stylesheet" href="style/blog.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="stars">
+        <div class="w-2/3 mx-auto">
+            <div class="mt-16">
+                <div class="collapse collapse-plus bg-base-100">
+                    <input type="radio" name="my-accordion-3" checked="checked" />
+                    <div class="collapse-title text-xl font-medium">Discuss the scope of var, let, and const</div>
+                    <div class="collapse-content">
+                        <p>JavaScript has three different variable declarations: var, let, and const. Each has its own
+                            scope, which determines where the variable can be accessed within your code.</p>
+                        <br>
+                        <p class="text-2xl font-bold">var:</p>
+                        <p><span class="underline">Function scope:</span> Variables declared with var are scoped to the
+                            function they are declared in.
+                            They can be accessed anywhere within that function, including nested functions.
+                        <p><span class="underline">Global scope:</span> If declared outside of a function, var variables
+                            are considered global and can
+                            be accessed from anywhere in the script.</p>
+                        <br>
+                        <p class="text-2xl font-bold">let and const:</p>
+                        <p><span class="underline">Block scope:</span> Variables declared with let and const have block
+                            scope. This means they are only
+                            accessible within the block (e.g., if statement, for loop, function) where they are
+                            declared.</p>
+                    </div>
+                </div>
+                <div class="collapse collapse-plus bg-base-200">
+                    <input type="radio" name="my-accordion-3" />
+                    <div class="collapse-title text-xl font-medium">Tell us the use cases of null and undefined</div>
+                    <div class="collapse-content">
+                        <p>Null and undefined are two special values in JavaScript that represent the absence of a
+                            value. They are often used to indicate different scenarios:</p>
+                        <br>
+                        <p class="text-2xl font-bold">Null:</p>
+                        <p><span class="underline">Explicit Absence:</span> When you intentionally want to represent the
+                            absence of a value.</p>
+                        <p><span class="underline">Default Value:</span> Used as a default value for variables or
+                            properties.</p>
+                        <p><span class="underline">Return Value:</span> Functions can return null to indicate that a
+                            value was not found or that an operation was unsuccessful.</p>
+                        <br>
+                        <p class="text-2xl font-bold">Undefined:</p>
+                        <p><span class="underline">Implicit Absence:</span> When a variable is declared but not assigned
+                            a value.</p>
+                        <p><span class="underline">Missing Property:</span> When you try to access a property of an
+                            object that doesn't exist.</p>
+                    </div>
+                </div>
+                <div class="collapse collapse-plus bg-base-200">
+                    <input type="radio" name="my-accordion-3" />
+                    <div class="collapse-title text-xl font-medium">What do you mean by REST API?</div>
+                    <div class="collapse-content">
+                        <p>A<span class="text-lg font-semibold"> REST API</span>(Representational State Transfer Application Programming Interface) is a type of
+                            web service that allows communication between clients (such as web browsers or mobile apps)
+                            and servers using the principles of REST architecture. REST is a set of architectural
+                            principles used to design networked applications.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Back Button using JavaScript -->
+            <button class="btn bg-red-500 my-10" onclick="goBack()">Back to Home</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.location.href = 'index.html'; // This navigates back to the previous page in the browser's history
+        }
+    </script>
+</body>
+
+</html>

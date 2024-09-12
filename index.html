@@ -17,12 +17,12 @@
             <img src="images/logo.png" alt="logo">
             <p class="text-4xl font-bold"><span class="text-red-500">AH</span>tube</p>
         </div>
-        <div id="id-2">
+        <div>
             <button id="sort-btn" class="btn btn-active" title="indeed before type selection">Sort by view</button>
         </div>
-        <div id="id-3">
-            <button id="blog-btn" class="btn btn-error hidden md:flex lg:flex">Blog</button>
-        </div>
+        <a class="no-underline" href="blog.html">
+            <button id="blog-btn" class="btn btn-error hidden md:flex lg:flex">Blog Page</button>
+        </a>
     </header>
     <hr>
     <!-- main content -->
@@ -31,11 +31,15 @@
         <section class="text-center space-x-4">
             <button id="all" class="btn btn-sm" onclick="loadContent(1000, 'all')">All</button>
             <button id="music" class="btn btn-sm" onclick="loadContent(1001, 'music')">Music</button>
-            <button id="comedy" class="btn btn-sm" onclick="loadContent(1002, 'comedy')">Comedy</button>
-            <button id="drawing" class="btn btn-sm" onclick="loadContent(1003, 'drawing')">Drawing</button>
+            <button id="comedy" class="btn btn-sm" onclick="loadContent(1003, 'comedy')">Comedy</button>
+            <button id="drawing" class="btn btn-sm" onclick="loadContent(1002, 'drawing')">Drawing</button>
         </section>
         <!-- content container -->
         <section class="container mx-auto mt-6">
+            <!-- loading spinner -->
+            <div id="spinner" class="hidden text-primary text-center my-10">
+                <span class="loading loading-spinner loading-lg"></span>
+            </div>
             <div id="content-container" class="grid grid-cols-1">
                 <!-- contents -->
             </div>
